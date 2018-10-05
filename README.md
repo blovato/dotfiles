@@ -1,5 +1,6 @@
 # dotfiles
 settings and configurations for my machine
+git setup is based on [this guide](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/).
 
 ## Setup on a new machine
 1. `$ git clone --bare https://github.com/blovato/dotfiles $HOME/.dotfiles`
