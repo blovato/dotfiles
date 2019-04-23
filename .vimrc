@@ -207,12 +207,7 @@ let g:airline_theme='gruvbox'
 " Allow jsx highlighting for .js files
 let g:jsx_ext_required = 0
 
-" Eslint path
-" let g:fixmyjs_rc_path = '~/code/commercial/eslintrc.json'
-let g:syntastic_javascript_checkers=['eslint']
-" let g:fixmyjs_rc_filename = ['.eslintrc', '.eslintrc.json']
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_loc_list_height = 5
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
+" Linting
+let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+let g:ale_linter_aliases = {'jsx': 'css'}
+let g:ale_set_highlights = 0

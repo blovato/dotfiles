@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/brentenlovato/.oh-my-zsh"
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -101,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 alias g='git'
 alias gs='git status'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias ga='git add'
 alias gc='git commit --verbose'
 alias gpush='git push'
@@ -118,6 +120,10 @@ alias befs='bundle exec foreman start'
 alias ber='bundle exec rails'
 alias bers='bundle exec rails server'
 alias bert='bundle exec rails test'
+
+# Default editor
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
 
 source $HOME/.zshenv
 

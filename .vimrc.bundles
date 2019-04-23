@@ -39,7 +39,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'burnettk/vim-angular'
 Plug 'elixir-lang/vim-elixir'
-" Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
 " Navigation and completion plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
