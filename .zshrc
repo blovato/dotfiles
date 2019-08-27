@@ -130,3 +130,5 @@ source $HOME/.zshenv
 # Adds support for iterm2's alert when a command finishes
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

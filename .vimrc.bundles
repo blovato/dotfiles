@@ -57,6 +57,7 @@ Plug 'raimondi/delimitmate'
 Plug 'Valloric/MatchTagAlways'
 Plug 'mkitt/tabline.vim'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'chrisbra/Colorizer'
 
 " Misc. plugins
 Plug 'tpope/vim-fugitive'
