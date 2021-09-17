@@ -15,11 +15,14 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 set noshowmode    " Don't show default INSERT, that's what airline is for
+
 " Make it obvious where 90 characters is
 set textwidth=90
 set colorcolumn=+1
+
 " Shamelessly allow mouse usage
 set mouse=a
+
 " set spell check on markdown and git commit files
 autocmd BufRead,BufNewFile *.md setlocal spell
 autocmd FileType gitcommit setlocal spell
@@ -58,6 +61,9 @@ augroup vimrcEx
   " Set syntax highlighting for specific file types
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+  " set filetypes as typescriptreact
+  autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
@@ -210,7 +216,34 @@ let g:airline_theme='gruvbox'
 " Allow jsx highlighting for .js files
 let g:jsx_ext_required = 0
 
-" Linting
-let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
-let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_set_highlights = 0
+" Optimize syntax highlighting to perform well with coc-tsserver
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" START IDE coc-tsserver configuration
+let g:coc_global_extensions = ['coc-tsserver']
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+" Highlight docs or diagnostic on text hover
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cr <Plug>(coc-references)
+nnoremap <silent> K :call CocAction('doHover')<CR>
+nmap <leader> rn <Plug>(coc-rename)
+nmap <silent> do <Plug>(coc-codeaction)
+" END IDE tsserver configuration

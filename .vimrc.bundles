@@ -36,10 +36,15 @@ Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-endwise'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'neoclide/coc-eslint'
+Plug 'neoclide/coc-prettier'
+Plug 'ianks/vim-tsx'
 Plug 'mxw/vim-jsx'
 Plug 'burnettk/vim-angular'
 Plug 'elixir-lang/vim-elixir'
-Plug 'w0rp/ale'
 
 " Navigation and completion plugins
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -58,6 +63,7 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'mkitt/tabline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'chrisbra/Colorizer'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Misc. plugins
 Plug 'tpope/vim-fugitive'
