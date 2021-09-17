@@ -221,6 +221,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " START IDE coc-tsserver configuration
+" Stolen from https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
 let g:coc_global_extensions = ['coc-tsserver']
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
   let g:coc_global_extensions += ['coc-prettier']
