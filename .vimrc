@@ -247,4 +247,6 @@ nmap <silent> cr <Plug>(coc-references)
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <leader> rn <Plug>(coc-rename)
 nmap <silent> do <Plug>(coc-codeaction)
+vmap <leader>p  <Plug>(coc-format-selected)
+nmap <leader>p  <Plug>(coc-format-selected)
 " END IDE tsserver configuration
