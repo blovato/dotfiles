@@ -1,8 +1,11 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Avoiding insecure completion-dependent directories
+ZSH_DISABLE_COMPFIX="true"
+
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/brentenlovato/.oh-my-zsh"
+export ZSH="/Users/lovatob/.oh-my-zsh"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -139,3 +142,18 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+# Source our Plangrid shell configs
+for file in ${HOME}/.shell.rc.d/*.rc; do
+    source ${file}
+done
+# Add Python and Ruby to path
+export PATH=/Library/Ruby/bin:$PATH
+python_bin_directories=(${HOME}/Library/Python/*/bin)
+extra_python_path=$(printf "%s:" "${python_bin_directories[@]}")
+export PATH=${extra_python_path}:$PATH
+export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
+export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
+
+# AWS VAULT
+export VAULT_ADDR='https://civ1.dv.adskengineer.net:8200'

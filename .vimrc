@@ -158,8 +158,10 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" Emmet tab completion
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" Navigate coc completion
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
 
 :imap jj <Esc>
 
@@ -172,8 +174,8 @@ noremap <Leader>q :quit<CR>
 " Remap :newtab
 noremap <Leader>t :tabnew<CR>
 
-" Remap :Files
-noremap <Leader>f :Files<CR>
+" Using :GFiles to utilize gitignore during search
+noremap <Leader>f :GFiles<CR>
 
 " Remap :w !pbcopy (copy to clipboard)
 noremap <Leader>cc :w !pbcopy<CR>
@@ -219,6 +221,10 @@ let g:jsx_ext_required = 0
 " Optimize syntax highlighting to perform well with coc-tsserver
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" Parse Jenkinsfiles as a groovy script
+au BufNewFile,BufRead Jenkinsfile setf groovy
+set re=0
 
 " START IDE coc-tsserver configuration
 " Stolen from https://thoughtbot.com/blog/modern-typescript-and-react-development-in-vim
