@@ -142,15 +142,19 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
 # Source our Plangrid shell configs
-for file in ${HOME}/.shell.rc.d/*.rc; do
-    source ${file}
-done
+# Commenting out due to not needing in latest mac thus far
+# for file in ${HOME}/.shell.rc.d/*.rc; do
+#     source ${file}
+# done
+
 # Add Python and Ruby to path
 export PATH=/Library/Ruby/bin:$PATH
-python_bin_directories=(${HOME}/Library/Python/*/bin)
+python_bin_directories=($(where python3))
 extra_python_path=$(printf "%s:" "${python_bin_directories[@]}")
 export PATH=${extra_python_path}:$PATH
+alias python=python3
 export LDFLAGS="${LDFLAGS} -L/usr/local/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/usr/local/opt/zlib/include"
 export PKG_CONFIG_PATH="${PKG_CONFIG_PATH} /usr/local/opt/zlib/lib/pkgconfig"
